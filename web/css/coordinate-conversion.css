@@ -1,0 +1,12 @@
+.coordinate-coversion {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.coordinate-coversion ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.coordinate-coversion input[type='text'] {
+    width: 100%;
+}
