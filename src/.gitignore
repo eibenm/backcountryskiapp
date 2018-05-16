@@ -31,4 +31,12 @@ tests/_support/_generated
 /.vagrant
 
 /web/images/*
+/web/downloads/*
+/web/uploads/*
+
 !/web/images/.gitkeep
+!/web/downloads/.gitkeep
+!/web/uploads/.gitkeep
+
+/data/data.sqlite
+/data/skiappdata.json
