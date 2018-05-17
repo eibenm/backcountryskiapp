@@ -25,10 +25,12 @@ tests/_support/_generated
 /web/images/*
 /web/downloads/*
 /web/uploads/*
+/skimontanadata/*
 
 !/web/images/.gitkeep
 !/web/downloads/.gitkeep
 !/web/uploads/.gitkeep
+!/skimontanadata/.gitkeep
 
 /data/data.sqlite
 /data/skiappdata.json
