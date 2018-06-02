@@ -2,7 +2,7 @@ FROM debian:stretch
 
 # Installing apache2
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends apache2 \
+    && apt-get install -y --no-install-recommends apache2 nano \
     && rm -rf /var/lib/apt/lists/*
 
 # Configure apache
@@ -11,16 +11,6 @@ RUN chown -R www-data:www-data /var/www
 ENV APACHE_RUN_USER www-data
 ENV APACHE_RUN_GROUP www-data
 ENV APACHE_LOG_DIR /var/log/apache2
-
-# Suppressing apache 2 warning:
-# 
-# Could not reliably determine the server's fully qualified domain name, 
-# using 172.17.0.2. Set the 'ServerName' directive globally to suppress this message
-RUN { \
-    echo ''; \
-    echo 'ServerName localhost'; \
-    echo ''; \
-} | tee -a /etc/apache2/apache2.conf
 
 # Registering package directory
 RUN echo "deb http://ftp.de.debian.org/debian stretch main" >> /etc/apt/sources.list
@@ -36,6 +26,8 @@ RUN apt-get update \
         php7.0-xml \
         php7.0-zip \
         php-xdebug
+
+COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 
 WORKDIR /var/www/html
 

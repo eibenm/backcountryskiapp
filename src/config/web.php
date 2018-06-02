@@ -47,9 +47,10 @@ $config = [
         'db' => $db,
         'urlManager' => [
             'enablePrettyUrl' => true,
-            // 'showScriptName' => false,
-            // 'rules' => [
-            // ],
+            'showScriptName' => false,
+            'enableStrictParsing' => false,
+            'rules' => [
+            ],
         ],
         'constants' => [
             'class' => 'app\components\Constants'

@@ -3,7 +3,7 @@ version: '3'
 services:
 
   webhost:
-    build: .
+    build: ./config
     image: php70
     ports:
       - '80:80'
