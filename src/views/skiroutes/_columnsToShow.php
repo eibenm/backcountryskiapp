@@ -15,20 +15,21 @@ use yii\widgets\Pjax;
 
     $this->registerJs('
 
-        // Reload gridview on columns change submit
-        $(document).ready(function(){
-            $("#update-ski-areas-grid").on("pjax:end", function() {
-                $.pjax.reload({container:"#ski-areas-grid-pjax","push":false,"replace":false,"timeout":' . Yii::$app->constants->pjaxTimeout . ',"scrollTo":false});
+        $(document).on("submit", "#column-form form", function(event) {
+            $("#column-form").collapse("hide");
+            $.post("' . Yii::$app->urlManager->createUrl($this->context->route) . '", $(event.target).serialize(), function() {
+                $.pjax.reload({
+                    container:"#ski-areas-grid-pjax",
+                    "push":false,
+                    "replace":false,
+                    "timeout":' . Yii::$app->constants->pjaxTimeout . ',"scrollTo":false
+                });
             });
+
+            return false;
         });
 
     ');
-
-    Pjax::begin([
-        'id' => 'update-ski-areas-grid',
-        'timeout' => Yii::$app->constants->pjaxTimeout,
-        'enablePushState' => false
-    ]);
 
     $columns = [
         'name_route' => 'Name Route',
@@ -39,7 +40,6 @@ use yii\widgets\Pjax;
         'snowfall' => 'Snowfall',
         'avalanche_danger' => 'Avalanche Danger',
         'skier_traffic' => 'Skier Traffic',
-        'download_kml' => 'Download KML',
         'bounds' => 'Bounds',
         'count_photos' => 'Count Photos'
     ];
@@ -63,8 +63,6 @@ use yii\widgets\Pjax;
     echo Html::a('Close', '#', ['id' => 'close-columns-to-show', 'style' => 'margin-left: 10px;']);
 
     echo Html::endForm();
-
-    Pjax::end();
 
     ?>
 

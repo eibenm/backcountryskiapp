@@ -20,10 +20,4 @@ $(function() {
         return false;
     });
 
-    // Close Columns View on Sumbit
-    $document.on("submit", "#column-form form", function() {
-        $('#column-form').collapse('hide');
-        return false;
-    });
-
 });

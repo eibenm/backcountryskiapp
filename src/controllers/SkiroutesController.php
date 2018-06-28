@@ -75,7 +75,7 @@ class SkiroutesController extends Controller
             'distance'
         ];
 
-        $columnsToShowRequest = Yii::$app->request->get('columnsToShow');
+        $columnsToShowRequest = Yii::$app->request->post('columnsToShow');
 
         if ($columnsToShowRequest) {
             $columnsToShow = array_keys($columnsToShowRequest);
